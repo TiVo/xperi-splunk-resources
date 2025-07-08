@@ -1,0 +1,21 @@
+<form class="form-horizontal form-complex">
+    <div class="control-group">
+        <label class="control-label" for="aaa_reboot_hosts">Host(s)</label>
+        <div class="controls">
+            <textarea name="action.aaa_reboot.param.hosts" id="aaa_reboot_hosts">localhost</textarea>
+            <span class="help-block">
+                Host list for remote execution
+            </span>
+        </div>
+    </div>
+    <br clear="both" />
+    <div class="control-group">
+        <label class="control-label" for="aaa_reboot_ssmSshKey">SSH Key Name (SSM)</label>
+        <div class="controls">
+            <input type="text" name="action.aaa_reboot.param.ssmSshKey" id="aaa_reboot_ssmSshKey" value="/sshKeys/splunk"/>
+            <span class="help-block">
+                SSM Parameter Store Name for SSH key
+            </span>
+        </div>
+    </div>
+</form>

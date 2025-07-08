@@ -1,0 +1,9 @@
+[]
+access = read : [ * ], write : [ admin, power ]
+export = none
+
+[alerts]
+export = system
+
+[alert_actions]
+export = system

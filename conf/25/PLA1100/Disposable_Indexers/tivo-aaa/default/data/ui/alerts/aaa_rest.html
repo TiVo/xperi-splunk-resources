@@ -1,0 +1,56 @@
+<form class="form-horizontal form-complex">
+    <div class="control-group">
+        <label class="control-label" for="aaa_rest_hosts">Host(s)</label>
+        <div class="controls">
+            <textarea name="action.aaa_rest.param.hosts" id="aaa_rest_hosts">localhost</textarea>
+            <span class="help-block">
+                Host list for remote execution
+            </span>
+        </div>
+    </div>
+    <br clear="both" />
+    <div class="control-group">
+        <label class="control-label" for="aaa_rest_restUrl">REST URL</label>
+        <div class="controls">
+            <input type="text" name="action.aaa_rest.param.restUrl" id="aaa_rest_restUrl" placeholder="https://{{ item }}:port/URL" value=""/>
+            <span class="help-block">
+                REST URL to call. Replace hostname with the literal: {{ item }}
+            </span>
+        </div>
+    </div>
+    <br clear="both" />
+    <div class="control-group">
+        <label class="control-label" for="aaa_rest_restUser">REST Credentials</label>
+        <div class="controls">
+            <input type="text" name="action.aaa_rest.param.restUser" id="aaa_rest_restUser" placeholder="Username" value=""/>
+            <input type="text" name="action.aaa_rest.param.restPass" id="aaa_rest_restPass" placeholder="SSM password key" value=""/>
+            <span class="help-block">
+                Credentials to use for REST call. Password should be a SSM key.
+            </span>
+        </div>
+    </div>
+    <br clear="both" />
+    <!--
+    <div class="control-group">
+        <label class="control-label" for="aaa_rest_httpVerb">HTTP Verb</label> 
+        <div class="controls">
+            <input type="radio" name="action.aaa_rest.param.httpVerb" id="aaa_rest_httpVerb.get"/><label for="aaa_rest_httpVerb.get">GET</label> <input type="radio" name="action.aaa_rest.param.httpVerb" id="aaa_rest_httpVerb.post"/> <label for="aaa_rest_httpVerb.post">POST</label> <input type="radio" name="action.aaa_rest.param.httpVerb" id="aaa_rest_httpVerb.delete"/><label for="aaa_rest_httpVerb.delete">DELETE</label>
+            <span class="help-block">
+                How to send data to the REST server(s)
+            </span>
+        </div>
+    </div>
+    -->
+    <div class="control-group">
+        <splunk-control-group label="HTTP Verb">
+            <splunk-radio-input name="action.aaa_rest.param.httpVerb" value="GET">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="DELETE">DELETE</option>
+            </splunk-radio-input>
+        </splunk-control-group>
+        <span class="help-block">
+            How to send data to the REST server(s)
+        </span>
+    </div>
+</form>

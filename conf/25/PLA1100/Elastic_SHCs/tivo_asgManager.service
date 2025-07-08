@@ -1,0 +1,14 @@
+[Unit]
+Description=Splunk ASG Manager Service
+After=Splunkd.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/asg_mgmt.sh
+Restart=always
+SyslogIdentifier=splunkAsgManager
+
+[Install]
+WantedBy=default.target
+
+
