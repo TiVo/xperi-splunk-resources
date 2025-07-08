@@ -1,0 +1,8 @@
+.DS_Store
+*.tgz
+out/*
+.vscode/
+__pycache__/
+*.py[cod]
+.deps
+build

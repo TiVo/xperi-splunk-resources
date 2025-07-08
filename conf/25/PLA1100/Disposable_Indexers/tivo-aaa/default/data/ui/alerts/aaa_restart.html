@@ -1,0 +1,44 @@
+<form class="form-horizontal form-complex">
+    <div class="control-group">
+        <label class="control-label" for="aaa_restart_hosts">Host(s)</label>
+        <div class="controls">
+            <textarea name="action.aaa_restart.param.hosts" id="aaa_restart_hosts">localhost</textarea>
+            <span class="help-block">
+                Host list for remote execution
+            </span>
+        </div>
+    </div>
+    <br clear="both" />
+    <div class="control-group">
+        <label class="control-label" for="aaa_restart_ssmSshKey">SSH Key Name (SSM)</label>
+        <div class="controls">
+            <input type="text" name="action.aaa_restart.param.ssmSshKey" id="aaa_restart_ssmSshKey" value="/sshKeys/splunk"/>
+            <span class="help-block">
+                SSM Parameter Store Name for SSH key
+            </span>
+        </div>
+    </div>
+    <br clear="both" />
+    <div class="control-group">
+        <label class="control-label" for="aaa_restart_target">systemctl target</label>
+        <div class="controls">
+            <input type="text" name="action.aaa_restart.param.target" id="aaa_restart_target"/>
+            <span class="help-block">
+                systemctl target unit
+            </span>
+        </div>
+    </div>
+    <br clear="both" />
+    <div class="control-group">
+        <splunk-control-group label="systemctl action">
+            <splunk-radio-input name="action.aaa_restart.param.systemctlAction" value="restart">
+                <option value="restarted">restart</option>
+                <option value="stopped">stop</option>
+                <option value="started">start</option>
+            </splunk-radio-input>
+        </splunk-control-group>
+        <span class="help-block">
+            Action for systemctl to perform
+        </span>
+    </div>
+</form>

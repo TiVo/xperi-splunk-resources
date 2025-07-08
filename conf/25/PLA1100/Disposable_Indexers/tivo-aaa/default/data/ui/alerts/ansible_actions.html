@@ -1,0 +1,84 @@
+<form class="form-horizontal form-complex">
+    <!--
+    <div class="control-group">
+        <label class="control-label" for="ansible_actions_execLocation">Execution Environment</label>
+        
+        <div class="controls">
+            <input type="radio" name="action.ansible_actions.param.execLocation" id="ansible_actions_execLocation.local"/><label for="ansible_actions_execLocation.local">Local</label>
+            <input type="radio" name="action.ansible_actions.param.execLocation" id="ansible_actions_execLocation.remote"/><label for="ansible_actions_execLocation.remote">Remote</label>
+            <span class="help-block">
+                Execution Environment: Local runs on Splunk node managing alert (e.g. REST actions), Remote performs action on indicated node via ssh
+            </span>
+        </div>
+        -->
+        <splunk-control-group label="Execution Environment">
+            <splunk-radio-input name="action.ansible_actions.param.execLocation" id="execLocation">
+                <option value="local" default>Local</option>
+                <option value="ssh">Remote</option>
+            </splunk-radio-input>
+        </splunk-control-group>
+    <!--
+    </div>
+    -->
+    <br clear="both" />
+    
+    <div class="control-group">
+        <label class="control-label" for="ansible_actions_hosts">Host(s)</label>
+        <div class="controls">
+            <textarea name="action.ansible_actions.param.hosts" id="ansible_actions_hosts">localhost</textarea>
+            <span class="help-block">
+                Host list for remote execution (or localhost for local execution)
+            </span>
+        </div>
+    </div>
+
+    <br clear="both" />
+    <!--
+    <splunk-text-input label="SSH key (in SSM)" help="SSM Parameter Store Name for SSH key"></splunk-text-input>
+    -->
+
+    <div class="control-group">
+        <label class="control-label" for="ansible_actions_ssmSshKey">SSH Key Name (SSM)</label>
+        <div class="controls">
+            <input type="text" name="action.ansible_actions.param.ssmSshKey" id="ansible_actions_ssmSshKey" value="/sshKeys/splunk"/>
+            <span class="help-block">
+                SSM Parameter Store Name for SSH key
+            </span>
+        </div>
+    </div>
+
+    <br clear="both" />
+
+    <div class="control-group">
+        <label class="control-label" for="ansible_actions_play">Play Setup</label>
+        <div class="controls">
+            <textarea name="action.ansible_actions.param.play" id="ansible_actions_play" style="height: 100px;width: 400px">
+gather_facts: no
+remote_user: splunk
+vars:
+  splunk_admin: "{{ lookup('aws_ssm', '/passwords/splunk', decrypt=true, region='us-west-2') }}"
+  ansible_python_interpreter: auto_silent
+            </textarea>
+            <span class="help-block">
+                Play setup, vars, etc. (YAML)
+            </span>
+        </div>
+    </div>
+
+    <br clear="both" />
+
+    <div class="control-group">
+        <label class="control-label" for="ansible_actions_tasks">Task(s)</label>
+        <div class="controls">
+            <textarea name="action.ansible_actions.param.tasks" id="ansible_actions_tasks" style="height: 500px;width: 400px">
+- name: ping
+    ping:
+            </textarea>
+            <span class="help-block">
+                Tasks to execute (YAML)
+            </span>
+        </div>
+    </div>
+
+    <br clear="both" />
+</form>
