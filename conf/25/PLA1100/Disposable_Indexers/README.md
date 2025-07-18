@@ -19,6 +19,9 @@ Ok, now that we have all the high-level information out of the way, here is the
 actual search and anisble play information we use to find and terminate indexer
 candidates.
 
+While we use this tool internally, and it works for us, as always, you should review
+the code before deploying it to your internal systems.
+
 ### Search
 This search is run nightly for the purposes of locating candidate indexers for
 termination. Our indexers our named `ssidxXX`, where `XX` is an index starting at 01.

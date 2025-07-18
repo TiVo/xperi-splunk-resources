@@ -1,0 +1,168 @@
+
+<dashboard version="2" theme="light">
+    <label>Annotation View</label>
+    <description></description>
+    <definition><![CDATA[
+{
+	"visualizations": {
+		"viz_Sm26KRcQ": {
+			"type": "splunk.line",
+			"options": {
+				"annotationX": "> annotation | seriesByName('_time')",
+				"annotationLabel": "> annotation | seriesByName('annotationLabel')",
+				"annotationColor": "> annotation | seriesByName('annotationColor')"
+			},
+			"dataSources": {
+				"primary": "ds_aEik8zzI",
+				"annotation": "ds_yiaTemCj"
+			}
+		},
+		"viz_Q2DFEVKa": {
+			"type": "splunk.markdown",
+			"options": {
+				"markdown": "**Main SPL**:\n`$text_mainSPL$`\n\n**Annotation SPL**:\n`$text_annotationSPL$`"
+			}
+		},
+		"viz_NDMur7nM": {
+			"type": "splunk.markdown",
+			"options": {
+				"markdown": "### Notes:\nThere are a couple of pre-defined fields that you can use in your annotation SPL that will allow you to impact how the charts are generated:\n* **annotationLabel**: This allows you to set the label associated with the annotation line, e.g. `|eval annotationLabel=\"magic event\"`\n* **annotationColor**: This allows you to set the color of the annotation line, e.g. `| eval annotationColor=\"#424242\"`"
+			}
+		}
+	},
+	"dataSources": {
+		"ds_aEik8zzI": {
+			"type": "ds.search",
+			"options": {
+				"query": "$text_mainSPL$",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"name": "MainSearch"
+		},
+		"ds_yiaTemCj": {
+			"type": "ds.search",
+			"options": {
+				"query": "$text_annotationSPL$",
+				"queryParameters": {
+					"earliest": "$global_time.earliest$",
+					"latest": "$global_time.latest$"
+				}
+			},
+			"name": "AnnotationSearch"
+		}
+	},
+	"defaults": {
+		"dataSources": {
+			"ds.search": {
+				"options": {
+					"queryParameters": {
+						"latest": "$global_time.latest$",
+						"earliest": "$global_time.earliest$"
+					}
+				}
+			}
+		}
+	},
+	"inputs": {
+		"input_global_trp": {
+			"type": "input.timerange",
+			"options": {
+				"token": "global_time",
+				"defaultValue": "-24h@h,now"
+			},
+			"title": "Global Time Range"
+		},
+		"input_XcMqEgCO": {
+			"options": {
+				"defaultValue": "",
+				"token": "text_mainSPL"
+			},
+			"title": "Main SPL",
+			"type": "input.text"
+		},
+		"input_qabjayRv": {
+			"options": {
+				"defaultValue": "",
+				"token": "text_annotationSPL"
+			},
+			"title": "Annotation SPL",
+			"type": "input.text"
+		}
+	},
+	"layout": {
+		"type": "grid",
+		"options": {
+			"width": 1440,
+			"height": 960
+		},
+		"structure": [
+			{
+				"item": "input_XcMqEgCO",
+				"type": "input",
+				"position": {
+					"x": 0,
+					"y": 0,
+					"w": 1440,
+					"h": 90
+				}
+			},
+			{
+				"item": "input_qabjayRv",
+				"type": "input",
+				"position": {
+					"x": 0,
+					"y": 90,
+					"w": 1440,
+					"h": 90
+				}
+			},
+			{
+				"item": "viz_NDMur7nM",
+				"type": "block",
+				"position": {
+					"x": 0,
+					"y": 180,
+					"w": 1440,
+					"h": 113
+				}
+			},
+			{
+				"item": "viz_Sm26KRcQ",
+				"type": "block",
+				"position": {
+					"x": 0,
+					"y": 293,
+					"w": 1440,
+					"h": 400
+				}
+			},
+			{
+				"item": "viz_Q2DFEVKa",
+				"type": "block",
+				"position": {
+					"x": 0,
+					"y": 693,
+					"w": 1440,
+					"h": 400
+				}
+			}
+		],
+		"globalInputs": [
+			"input_global_trp"
+		]
+	},
+	"description": "",
+	"title": "Annotation View"
+}
+    ]]></definition>
+    <meta type="hiddenElements"><![CDATA[
+{
+	"hideEdit": false,
+	"hideOpenInSearch": false,
+	"hideExport": false
+}
+    ]]></meta>
+</dashboard>
